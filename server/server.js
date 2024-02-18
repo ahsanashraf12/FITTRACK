@@ -18,6 +18,7 @@ app.use('/api/workout', workoutRouter);
 app.use('/api/nutrition', nutritionRouter);
 app.use('/api/progress', progressRouter);
 
+// App listening on port
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
