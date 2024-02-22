@@ -7,6 +7,7 @@ const userRouter = require('./routers/userRouter');
 // const workoutRouter = require('./routers/workoutRouter');
 // const nutritionRouter = require('./routers/nutritionRouter');
 // const progressRouter = require('./routers/progressRouter');
+const authRouter = require('./routers/authRouter');
 
 const port = process.env.PORT || 3000;
 const app = express();
@@ -19,6 +20,7 @@ connectToDatabase();
 
 // Use routers
 app.use('/api/user', userRouter);
+app.use('/api/auth', authRouter); 
 // app.use('/api/profile', profileRouter);
 // app.use('/api/auth', authRouter);
 // app.use('/api/workout', workoutRouter);
