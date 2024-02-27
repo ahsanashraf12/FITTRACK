@@ -1,6 +1,6 @@
 // server.js
 const express = require('express');
-const connectToDatabase = require('./utils/db'); // Adjust the path if needed
+const connectToDatabase = require('./utils/db'); 
 const userRouter = require('./routers/userRouter');
 // const profileRouter = require('./routers/profileRouter');
 // const authRouter = require('./routers/authRouter');
