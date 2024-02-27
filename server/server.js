@@ -9,7 +9,7 @@ const userRouter = require('./routers/userRouter');
 // const progressRouter = require('./routers/progressRouter');
 const authRouter = require('./routers/authRouter');
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5001;
 const app = express();
 
 // Middleware to parse JSON
@@ -28,6 +28,7 @@ app.use('/api/auth', authRouter);
 // app.use('/api/progress', progressRouter);
 
 // App listening on port
+
 app.listen(port, () => {
   console.log(`Server listening port: ${port}`);
 });
