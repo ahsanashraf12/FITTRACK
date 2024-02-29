@@ -51,7 +51,7 @@ export const Login = () => {
   
         setUser({ username: "", password: "" });
         toast.success("Login successful");
-        navigate("/");
+        navigate("/dashboard");
       } else if (response.status === 401) {
         toast.error(
           res_data.extraDetails || res_data.message || "Invalid credentials"

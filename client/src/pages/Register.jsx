@@ -43,7 +43,7 @@ export const Register = () => {
       if (response.ok) {
         setUser({ username: '', password: '', name: '', email: '' });
         toast.success('Registration successful');
-        navigate('/');
+        navigate('/login');
       } else {
         if (res_data.errors) {
           // Handle validation errors
