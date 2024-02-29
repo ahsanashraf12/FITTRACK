@@ -55,10 +55,15 @@ const userController = {
       // Compare the provided password with the hashed password in the database
       const passwordMatch = await bcrypt.compare(password, user.password);
 
-      // If passwords match, generate a token or perform the necessary authentication logic
+      // If passwords match, generate a JWT token
       if (passwordMatch) {
-        // In a real application, you might generate and send a JWT token here
-        res.status(200).json({ message: 'Login successful' });
+        const token = jwt.sign(
+          { userId: user._id, username: user.username },
+          'your_secret_key',  // Replace with your own secret key
+          { expiresIn: '1h' }
+        );
+
+        res.status(200).json({ token, message: 'Login successful' });
       } else {
         res.status(401).json({ error: 'Invalid username or password' });
       }

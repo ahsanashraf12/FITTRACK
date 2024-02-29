@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { Register } from "./Register";
 
 export const Login = () => {
   const [user, setUser] = useState({
@@ -43,16 +42,19 @@ export const Login = () => {
   
       const res_data = await response.json();
   
-      if (response.status === 200) { // Check for 200 status code
+      if (response.status === 200) {
+        // Log the generated token
+        console.log("Generated Token:", res_data.token);
+  
         // Call the function to store the token
         storeTokenInLS(res_data.token);
   
         setUser({ username: "", password: "" });
         toast.success("Login successful");
         navigate("/");
-      } else if (response.status === 401) { // Check for 401 status code
+      } else if (response.status === 401) {
         toast.error(
-            res_data.extraDetails || res_data.message || "Invalid credentials"
+          res_data.extraDetails || res_data.message || "Invalid credentials"
         );
         console.log("invalid credential");
       } else {
@@ -65,6 +67,7 @@ export const Login = () => {
       console.log(error);
     }
   };
+  
   
 
   return (
