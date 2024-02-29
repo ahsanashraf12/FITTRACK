@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify'; // Import the toast library
 import '../assets/css/styles.min.css'; // Update the path accordingly
 
@@ -31,9 +31,9 @@ export const Register = () => {
     e.preventDefault();
     try {
       const response = await fetch(URL, {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(user),
       });
@@ -41,16 +41,24 @@ export const Register = () => {
       const res_data = await response.json();
 
       if (response.ok) {
-        setUser({ username: "", password: "", name: "", email: "" });
-        toast.success("Registration successful");
-        navigate("/");
+        setUser({ username: '', password: '', name: '', email: '' });
+        toast.success('Registration successful');
+        navigate('/');
       } else {
-        toast.error(
-          res_data.extraDetails ? res_data.extraDetails : res_data.message
-        );
+        if (res_data.errors) {
+          // Handle validation errors
+          res_data.errors.forEach((error) => {
+            toast.error(error.msg);
+          });
+        } else {
+          // Handle other errors
+          toast.error(
+            res_data.message ? res_data.message : 'Registration failed. Please try again.'
+          );
+        }
       }
     } catch (error) {
-      console.log("register ", error);
+      console.log('register ', error);
     }
   };
 
@@ -66,7 +74,7 @@ export const Register = () => {
                   <a href="./index.html" className="text-nowrap logo-img text-center d-block py-3 w-100">
                     <img src="../assets/images/logos/dark-logo.svg" width="180" alt="" />
                   </a>
-                  <p className="text-center">FITTRACK - We Care About Your Fitness</p>
+                  <p className="text-center">Fittrack - We Care About Your Fitness</p>
                   <form onSubmit={handleSubmit}>
                     <div className="mb-3">
                       <label htmlFor="exampleInputtext1" className="form-label">Name</label>
@@ -91,7 +99,7 @@ export const Register = () => {
                     <button type="submit" className="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Sign Up</button>
                     <div className="d-flex align-items-center justify-content-center">
                       <p className="fs-4 mb-0 fw-bold">Already have an Account?</p>
-                      <a className="text-primary fw-bold ms-2" href="./authentication-login.html">Sign In</a>
+                      <NavLink to="/login"> <a className="text-primary fw-bold ms-2">Sign In</a> </NavLink>
                     </div>
                   </form>
                 </div>
