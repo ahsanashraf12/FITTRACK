@@ -10,7 +10,7 @@ function App() {
   return (
     <>
      <BrowserRouter>
-        { <Navbar /> }
+        {location.pathname !== "/dashboard" && <Navbar />}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
