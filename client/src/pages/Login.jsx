@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { Register } from "./Register";
 
 export const Login = () => {
   const [user, setUser] = useState({
@@ -37,28 +38,34 @@ export const Login = () => {
         },
         body: JSON.stringify(user),
       });
-
+  
       console.log("login form", response);
-
+  
       const res_data = await response.json();
-
-      if (response.ok) {
+  
+      if (response.status === 200) { // Check for 200 status code
         // Call the function to store the token
         storeTokenInLS(res_data.token);
-
+  
         setUser({ username: "", password: "" });
         toast.success("Login successful");
         navigate("/");
+      } else if (response.status === 401) { // Check for 401 status code
+        toast.error(
+            res_data.extraDetails || res_data.message || "Invalid credentials"
+        );
+        console.log("invalid credential");
       } else {
         toast.error(
           res_data.extraDetails ? res_data.extraDetails : res_data.message
         );
-        console.log("invalid credential");
+        console.log("Login failed. Please try again.");
       }
     } catch (error) {
       console.log(error);
     }
   };
+  
 
   return (
     <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
@@ -69,14 +76,14 @@ export const Login = () => {
             <div class="col-md-8 col-lg-6 col-xxl-3">
               <div class="card mb-0">
                 <div class="card-body">
-                  <a href="./index.html" class="text-nowrap logo-img text-center d-block py-3 w-100">
+                  {/* <a class="text-nowrap logo-img text-center d-block py-3 w-100">
                     <img src="../assets/images/logos/dark-logo.svg" width="180" alt="" />
-                  </a>
+                  </a> */}
                   <p className="text-center">Fittrack - We Care About Your Fitness</p>
                   <form onSubmit={handleSubmit}>
                     <div class="mb-3">
                       <label for="exampleInputEmail1" class="form-label">Username</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
                         name="username" required autoComplete="off" value={user.username} onChange={handleInput} />
                     </div>
                     <div class="mb-4">
@@ -92,7 +99,7 @@ export const Login = () => {
                         </label>
                       </div>
                     </div>
-                    <a href="./index.html" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Sign In</a>
+                    <button type="submit" className="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Sign In</button>
                     <div class="d-flex align-items-center justify-content-center">
                       <p class="fs-4 mb-0 fw-bold">New to Fittrack?</p>
                       <NavLink to="/register"> <a class="text-primary fw-bold ms-2">Create an account</a> </NavLink>
