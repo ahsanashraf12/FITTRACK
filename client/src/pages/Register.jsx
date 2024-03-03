@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify'; // Import the toast library
+import { Navbar } from "../components/Navbar";
 
 export const Register = () => {
   const [user, setUser] = useState({
@@ -62,6 +63,8 @@ export const Register = () => {
   };
 
   return (
+    <>
+    <Navbar/>
     <div className="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
       data-sidebar-position="fixed" data-header-position="fixed">
       <div className="position-relative overflow-hidden radial-gradient min-vh-100 d-flex align-items-center justify-content-center">
@@ -108,5 +111,6 @@ export const Register = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
