@@ -1,5 +1,7 @@
 import React from 'react';
 import { NavLink, useNavigate } from "react-router-dom";
+import dashboardlogo from '../assets/images/logos/dark-logo.svg';
+import userprofile from '../assets/images/profile/user-1.jpg';
 
 
 export const UserDashboard = () => {
@@ -10,7 +12,7 @@ export const UserDashboard = () => {
       <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
           <NavLink to="/dashboard"> <a class="text-nowrap logo-img">
-            <img src="assets/images/logos/dark-logo.svg" width="180" alt="" />
+            <img src={dashboardlogo} width="180" alt="Logo" />
           </a> </NavLink>
           <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
             <i class="ti ti-x fs-8"></i>
@@ -32,14 +34,14 @@ export const UserDashboard = () => {
             </li>
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span class="hide-menu">UI COMPONENTS</span>
+              <span class="hide-menu">Excerices</span>
             </li>
             <li class="sidebar-item">
               <a class="sidebar-link" href="./ui-buttons.html" aria-expanded="false">
                 <span>
                   <i class="ti ti-article"></i>
                 </span>
-                <span class="hide-menu">Buttons</span>
+                <span class="hide-menu">Yoga</span>
               </a>
             </li>
             <li class="sidebar-item">
@@ -47,7 +49,7 @@ export const UserDashboard = () => {
                 <span>
                   <i class="ti ti-alert-circle"></i>
                 </span>
-                <span class="hide-menu">Alerts</span>
+                <span class="hide-menu">Weight Gain</span>
               </a>
             </li>
             <li class="sidebar-item">
@@ -55,7 +57,7 @@ export const UserDashboard = () => {
                 <span>
                   <i class="ti ti-cards"></i>
                 </span>
-                <span class="hide-menu">Card</span>
+                <span class="hide-menu">Weight Loss</span>
               </a>
             </li>
             <li class="sidebar-item">
@@ -63,7 +65,7 @@ export const UserDashboard = () => {
                 <span>
                   <i class="ti ti-file-description"></i>
                 </span>
-                <span class="hide-menu">Forms</span>
+                <span class="hide-menu">Reminders</span>
               </a>
             </li>
             <li class="sidebar-item">
@@ -71,7 +73,7 @@ export const UserDashboard = () => {
                 <span>
                   <i class="ti ti-typography"></i>
                 </span>
-                <span class="hide-menu">Typography</span>
+                <span class="hide-menu">Alarms</span>
               </a>
             </li>
             <li class="nav-small-cap">
@@ -83,35 +85,7 @@ export const UserDashboard = () => {
                 <span>
                   <i class="ti ti-login"></i>
                 </span>
-                <span class="hide-menu">Login</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="./authentication-register.html" aria-expanded="false">
-                <span>
-                  <i class="ti ti-user-plus"></i>
-                </span>
-                <span class="hide-menu">Register</span>
-              </a>
-            </li>
-            <li class="nav-small-cap">
-              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span class="hide-menu">EXTRA</span>
-            </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="./icon-tabler.html" aria-expanded="false">
-                <span>
-                  <i class="ti ti-mood-happy"></i>
-                </span>
-                <span class="hide-menu">Icons</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="./sample-page.html" aria-expanded="false">
-                <span>
-                  <i class="ti ti-aperture"></i>
-                </span>
-                <span class="hide-menu">Sample Page</span>
+                <span class="hide-menu">Logout</span>
               </a>
             </li>
           </ul>
@@ -147,11 +121,10 @@ export const UserDashboard = () => {
           </ul>
           <div className="navbar-collapse justify-content-end px-0" id="navbarNav">
             <ul className="navbar-nav flex-row ms-auto align-items-center justify-content-end">
-              <a href="https://adminmart.com/product/modernize-free-bootstrap-admin-dashboard/" target="_blank" className="btn btn-primary">Download Free</a>
               <li className="nav-item dropdown">
                 <a className="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
                   aria-expanded="false">
-                  <img src="/client/src/assets/images/profile/user-1.jpg" alt="" width="35" height="35" className="rounded-circle"/>
+                  <img src={userprofile} alt="" width="35" height="35" className="rounded-circle"/>
                 </a>
                 <div className="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                   <div className="message-body">
@@ -182,7 +155,7 @@ export const UserDashboard = () => {
               <div className="card-body">
                 <div className="d-sm-flex d-block align-items-center justify-content-between mb-9">
                   <div className="mb-3 mb-sm-0">
-                    <h5 className="card-title fw-semibold">Sales Overview</h5>
+                    <h5 className="card-title fw-semibold">Excerices Overview</h5>
                   </div>
                   <div>
                     <select className="form-select">
@@ -202,10 +175,10 @@ export const UserDashboard = () => {
               <div className="col-lg-12">
                 <div className="card overflow-hidden">
                   <div className="card-body p-4">
-                    <h5 className="card-title mb-9 fw-semibold">Yearly Breakup</h5>
+                    <h5 className="card-title mb-9 fw-semibold">Monthly Lose Weight</h5>
                     <div className="row align-items-center">
                       <div className="col-8">
-                        <h4 className="fw-semibold mb-3">$36,358</h4>
+                        <h4 className="fw-semibold mb-3">36.70/LBS</h4>
                         <div className="d-flex align-items-center mb-3">
                           <span
                             className="me-1 rounded-circle bg-light-success round-20 d-flex align-items-center justify-content-center">
@@ -239,8 +212,8 @@ export const UserDashboard = () => {
                   <div className="card-body">
                     <div className="row alig n-items-start">
                       <div className="col-8">
-                        <h5 className="card-title mb-9 fw-semibold"> Monthly Earnings </h5>
-                        <h4 className="fw-semibold mb-3">$6,820</h4>
+                        <h5 className="card-title mb-9 fw-semibold"> Monthly Gain </h5>
+                        <h4 className="fw-semibold mb-3">45.00/LBS</h4>
                         <div className="d-flex align-items-center pb-1">
                           <span
                             className="me-2 rounded-circle bg-light-danger round-20 d-flex align-items-center justify-content-center">
