@@ -395,9 +395,6 @@ export const UserDashboard = () => {
             </div>
           </div>
           </div>
-          <div className="py-6 px-6 text-center">
-          <p className="mb-0 fs-4">Design and Developed by <a href="https://adminmart.com/" target="_blank" className="pe-1 text-primary text-decoration-underline">AdminMart.com</a></p>
-        </div>
         </div>
       </div>
     </div>
