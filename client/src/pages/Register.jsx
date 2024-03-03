@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify'; // Import the toast library
-import '../assets/css/styles.min.css'; // Update the path accordingly
 
 export const Register = () => {
   const [user, setUser] = useState({

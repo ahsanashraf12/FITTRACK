@@ -1,132 +1,134 @@
 import React from 'react';
+import { NavLink, useNavigate } from "react-router-dom";
+
 
 export const UserDashboard = () => {
   return (
     <>
     <div className="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed">
-       <aside className="left-sidebar">
+      <aside className="left-sidebar">
       <div>
-        <div className="brand-logo d-flex align-items-center justify-content-between">
-          <a href="./index.html" className="text-nowrap logo-img">
-            <img src="../assets/images/logos/dark-logo.svg" width="180" alt="" />
-          </a>
-          <div className="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
-            <i className="ti ti-x fs-8"></i>
+        <div class="brand-logo d-flex align-items-center justify-content-between">
+          <NavLink to="/dashboard"> <a class="text-nowrap logo-img">
+            <img src="assets/images/logos/dark-logo.svg" width="180" alt="" />
+          </a> </NavLink>
+          <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+            <i class="ti ti-x fs-8"></i>
           </div>
         </div>
-        <nav className="sidebar-nav scroll-sidebar" data-simplebar="">
+        <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
           <ul id="sidebarnav">
-            <li className="nav-small-cap">
-              <i className="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span className="hide-menu">Home</span>
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Home</span>
             </li>
-            <li className="sidebar-item">
-              <a className="sidebar-link" href="./index.html" aria-expanded="false">
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./index.html" aria-expanded="false">
                 <span>
-                  <i className="ti ti-layout-dashboard"></i>
+                  <i class="ti ti-layout-dashboard"></i>
                 </span>
-                <span className="hide-menu">Dashboard</span>
+                <span class="hide-menu">Dashboard</span>
               </a>
             </li>
-            <li className="nav-small-cap">
-              <i className="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span className="hide-menu">UI COMPONENTS</span>
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">UI COMPONENTS</span>
             </li>
-            <li className="sidebar-item">
-              <a className="sidebar-link" href="./ui-buttons.html" aria-expanded="false">
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./ui-buttons.html" aria-expanded="false">
                 <span>
-                  <i className="ti ti-article"></i>
+                  <i class="ti ti-article"></i>
                 </span>
-                <span className="hide-menu">Buttons</span>
+                <span class="hide-menu">Buttons</span>
               </a>
             </li>
-            <li className="sidebar-item">
-              <a className="sidebar-link" href="./ui-alerts.html" aria-expanded="false">
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./ui-alerts.html" aria-expanded="false">
                 <span>
-                  <i className="ti ti-alert-circle"></i>
+                  <i class="ti ti-alert-circle"></i>
                 </span>
-                <span className="hide-menu">Alerts</span>
+                <span class="hide-menu">Alerts</span>
               </a>
             </li>
-            <li className="sidebar-item">
-              <a className="sidebar-link" href="./ui-card.html" aria-expanded="false">
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./ui-card.html" aria-expanded="false">
                 <span>
-                  <i className="ti ti-cards"></i>
+                  <i class="ti ti-cards"></i>
                 </span>
-                <span className="hide-menu">Card</span>
+                <span class="hide-menu">Card</span>
               </a>
             </li>
-            <li className="sidebar-item">
-              <a className="sidebar-link" href="./ui-forms.html" aria-expanded="false">
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./ui-forms.html" aria-expanded="false">
                 <span>
-                  <i className="ti ti-file-description"></i>
+                  <i class="ti ti-file-description"></i>
                 </span>
-                <span className="hide-menu">Forms</span>
+                <span class="hide-menu">Forms</span>
               </a>
             </li>
-            <li className="sidebar-item">
-              <a className="sidebar-link" href="./ui-typography.html" aria-expanded="false">
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./ui-typography.html" aria-expanded="false">
                 <span>
-                  <i className="ti ti-typography"></i>
+                  <i class="ti ti-typography"></i>
                 </span>
-                <span className="hide-menu">Typography</span>
+                <span class="hide-menu">Typography</span>
               </a>
             </li>
-            <li className="nav-small-cap">
-              <i className="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span className="hide-menu">AUTH</span>
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">AUTH</span>
             </li>
-            <li className="sidebar-item">
-              <a className="sidebar-link" href="./authentication-login.html" aria-expanded="false">
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./authentication-login.html" aria-expanded="false">
                 <span>
-                  <i className="ti ti-login"></i>
+                  <i class="ti ti-login"></i>
                 </span>
-                <span className="hide-menu">Login</span>
+                <span class="hide-menu">Login</span>
               </a>
             </li>
-            <li className="sidebar-item">
-              <a className="sidebar-link" href="./authentication-register.html" aria-expanded="false">
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./authentication-register.html" aria-expanded="false">
                 <span>
-                  <i className="ti ti-user-plus"></i>
+                  <i class="ti ti-user-plus"></i>
                 </span>
-                <span className="hide-menu">Register</span>
+                <span class="hide-menu">Register</span>
               </a>
             </li>
-            <li className="nav-small-cap">
-              <i className="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span className="hide-menu">EXTRA</span>
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">EXTRA</span>
             </li>
-            <li className="sidebar-item">
-              <a className="sidebar-link" href="./icon-tabler.html" aria-expanded="false">
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./icon-tabler.html" aria-expanded="false">
                 <span>
-                  <i className="ti ti-mood-happy"></i>
+                  <i class="ti ti-mood-happy"></i>
                 </span>
-                <span className="hide-menu">Icons</span>
+                <span class="hide-menu">Icons</span>
               </a>
             </li>
-            <li className="sidebar-item">
-              <a className="sidebar-link" href="./sample-page.html" aria-expanded="false">
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./sample-page.html" aria-expanded="false">
                 <span>
-                  <i className="ti ti-aperture"></i>
+                  <i class="ti ti-aperture"></i>
                 </span>
-                <span className="hide-menu">Sample Page</span>
+                <span class="hide-menu">Sample Page</span>
               </a>
             </li>
           </ul>
-          <div className="unlimited-access hide-menu bg-light-primary position-relative mb-7 mt-5 rounded">
-            <div className="d-flex">
-              <div className="unlimited-access-title me-3">
-                <h6 className="fw-semibold fs-4 mb-6 text-dark w-85">Upgrade to pro</h6>
-                <a href="https://adminmart.com/product/modernize-bootstrap-5-admin-template/" target="_blank" className="btn btn-primary fs-2 fw-semibold lh-sm">Buy Pro</a>
+          <div class="unlimited-access hide-menu bg-light-primary position-relative mb-7 mt-5 rounded">
+            <div class="d-flex">
+              <div class="unlimited-access-title me-3">
+                <h6 class="fw-semibold fs-4 mb-6 text-dark w-85">Upgrade to pro</h6>
+                <a href="https://adminmart.com/product/modernize-bootstrap-5-admin-template/" target="_blank" class="btn btn-primary fs-2 fw-semibold lh-sm">Buy Pro</a>
               </div>
-              <div className="unlimited-access-img">
-                <img src="../assets/images/backgrounds/rocket.png" alt="" className="img-fluid" />
+              <div class="unlimited-access-img">
+                <img src="../assets/images/backgrounds/rocket.png" alt="" class="img-fluid"/>
               </div>
             </div>
           </div>
         </nav>
-      </div>
-        </aside>
+      </div> 
+      </aside>
       <div className="body-wrapper">
         <header className="app-header">
         <nav className="navbar navbar-expand-lg navbar-light">
@@ -149,7 +151,7 @@ export const UserDashboard = () => {
               <li className="nav-item dropdown">
                 <a className="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
                   aria-expanded="false">
-                  <img src="../assets/images/profile/user-1.jpg" alt="" width="35" height="35" className="rounded-circle"/>
+                  <img src="/client/src/assets/images/profile/user-1.jpg" alt="" width="35" height="35" className="rounded-circle"/>
                 </a>
                 <div className="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                   <div className="message-body">
