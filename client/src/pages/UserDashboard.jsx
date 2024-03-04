@@ -1,9 +1,12 @@
 import React from 'react';
 import Sidebar from '../components/Sidebar';
 import userprofile from '../assets/images/profile/user-1.jpg';
+import { NavLink, useParams } from "react-router-dom";
 
 
 export const UserDashboard = () => {
+  const { userId } = useParams();
+
   return (
     <>
     <div className="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed">
@@ -33,10 +36,10 @@ export const UserDashboard = () => {
                 </a>
                 <div className="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                   <div className="message-body">
-                    <a href="javascript:void(0)" className="d-flex align-items-center gap-2 dropdown-item">
-                      <i className="ti ti-user fs-6"></i>
-                      <p className="mb-0 fs-3">My Profile</p>
-                    </a>
+                  <NavLink to={`/profile/${userId}`} className="d-flex align-items-center gap-2 dropdown-item">
+                    <i className="ti ti-user fs-6"></i>
+                    <p className="mb-0 fs-3">My Profile</p>
+                  </NavLink>
                     <a href="javascript:void(0)" className="d-flex align-items-center gap-2 dropdown-item">
                       <i className="ti ti-mail fs-6"></i>
                       <p className="mb-0 fs-3">My Account</p>

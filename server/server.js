@@ -3,7 +3,7 @@ const express = require('express');
 const connectToDatabase = require('./utils/db'); 
 const cors = require('cors');
 const userRouter = require('./routers/userRouter');
-// const profileRouter = require('./routers/profileRouter');
+const profileRouter = require('./routers/profileRouter');
 // const authRouter = require('./routers/authRouter');
 // const workoutRouter = require('./routers/workoutRouter');
 // const nutritionRouter = require('./routers/nutritionRouter');
@@ -39,7 +39,7 @@ connectToDatabase();
 // Use routers
 app.use('/api/user', userRouter);
 app.use('/api/auth', authRouter); 
-// app.use('/api/profile', profileRouter);
+app.use('/api/profile', profileRouter);
 // app.use('/api/auth', authRouter);
 // app.use('/api/workout', workoutRouter);
 // app.use('/api/nutrition', nutritionRouter);

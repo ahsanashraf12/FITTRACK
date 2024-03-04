@@ -2,39 +2,39 @@
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
+const jwt = require('jsonwebtoken'); // Import jwt
+const { v4: uuidv4 } = require('uuid'); // Import uuid
 
 
 const userController = {
   // Register a new user
   register: async (req, res) => {
     try {
-      // Extract user information from the request body
       const { username, password, name, email } = req.body;
 
-      // Check if the username or email already exists in the database
       const existingUser = await User.findOne({ $or: [{ username }, { email }] });
       if (existingUser) {
-        return res.status(400).json({ error: 'Username or email already exists' });
+        return res.status(400).json({ errors: [{ msg: 'Username or email already exists' }] });
       }
 
-      // Hash the password before saving it to the database
       const hashedPassword = await bcrypt.hash(password, 10);
 
-      // Create a new user instance
+      const userId = uuidv4();
+
       const newUser = new User({
+        userId,
         username,
         password: hashedPassword,
         name,
         email,
       });
 
-      // Save the user to the database
       await newUser.save();
 
-      res.status(201).json({ message: 'User registered successfully' });
+      res.status(201).json({ message: 'User registered successfully', userId });
     } catch (error) {
       console.error('Error registering user:', error);
-      res.status(500).json({ error: 'Internal server error' });
+      res.status(500).json({ errors: [{ msg: 'Internal server error' }] });
     }
   },
 
@@ -58,8 +58,8 @@ const userController = {
       // If passwords match, generate a JWT token
       if (passwordMatch) {
         const token = jwt.sign(
-          { userId: user._id, username: user.username },
-          'your_secret_key',  // Replace with your own secret key
+          { userId: user.userId, username: user.username }, // Change to use userId
+          'THEFITTRACK',  // Replace with your own secret key
           { expiresIn: '1h' }
         );
 
@@ -83,8 +83,8 @@ const userController = {
         return res.status(400).json({ error: 'Invalid user ID' });
       }
 
-      // Fetch the user from the database by ID
-      const user = await User.findById(userId);
+      // Fetch the user from the database by userId
+      const user = await User.findOne({ userId }); // Change to use userId
 
       if (!user) {
         return res.status(404).json({ error: 'User not found' });

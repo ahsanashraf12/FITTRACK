@@ -10,6 +10,7 @@ const userSchema = new mongoose.Schema({
   age: { type: Number },
   height: { type: Number },
   weight: { type: Number },
+  userId: { type: String, required: true, unique: true }, // Add this line for userId
 }, { timestamps: true });
 
 const User = mongoose.model('User', userSchema);

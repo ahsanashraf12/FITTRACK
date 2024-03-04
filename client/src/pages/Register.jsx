@@ -2,6 +2,8 @@ import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify'; // Import the toast library
 import { Navbar } from "../components/Navbar";
+import { v4 as uuidv4 } from 'uuid'; // Import only the v4 function from uuid
+
 
 export const Register = () => {
   const [user, setUser] = useState({
@@ -15,7 +17,6 @@ export const Register = () => {
 
   const URL = `http://localhost:5001/api/user/register`;
 
-  // handling the input values
   const handleInput = (e) => {
     let name = e.target.name;
     let value = e.target.value;
@@ -26,32 +27,41 @@ export const Register = () => {
     });
   };
 
-  // handling the form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      const userId = uuidv4();
+
       const response = await fetch(URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(user),
+        body: JSON.stringify({
+          ...user,
+          userId: userId,
+        }),
       });
 
       const res_data = await response.json();
 
       if (response.ok) {
-        setUser({ username: '', password: '', name: '', email: '' });
+        setUser({
+          username: '',
+          password: '',
+          name: '',
+          email: '',
+          userId: res_data.userId,
+        });
+
         toast.success('Registration successful');
         navigate('/login');
       } else {
         if (res_data.errors) {
-          // Handle validation errors
           res_data.errors.forEach((error) => {
             toast.error(error.msg);
           });
         } else {
-          // Handle other errors
           toast.error(
             res_data.message ? res_data.message : 'Registration failed. Please try again.'
           );

@@ -8,6 +8,7 @@ export const Login = () => {
   const [user, setUser] = useState({
     username: "",
     password: "",
+    userId: "", // Add userId to the state
   });
 
   const navigate = useNavigate();
@@ -31,6 +32,7 @@ export const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    let res_data; // Declare res_data outside the try block
     try {
       const response = await fetch(URL, {
         method: "POST",
@@ -42,7 +44,7 @@ export const Login = () => {
   
       console.log("login form", response);
   
-      const res_data = await response.json();
+      res_data = await response.json(); // Assign the value here
   
       if (response.status === 200) {
         // Log the generated token
@@ -51,7 +53,13 @@ export const Login = () => {
         // Call the function to store the token
         storeTokenInLS(res_data.token);
   
-        setUser({ username: "", password: "" });
+        // Update the user state with the userId
+        setUser({
+          username: "",
+          password: "",
+          userId: res_data.userId, // Assuming the backend sends userId in the response
+        });
+  
         toast.success("Login successful");
         navigate("/dashboard");
       } else if (response.status === 401) {
@@ -69,6 +77,7 @@ export const Login = () => {
       console.log(error);
     }
   };
+  
   
   
 
