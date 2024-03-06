@@ -1,7 +1,7 @@
 import React from 'react';
 import Sidebar from '../components/Sidebar';
 import userprofile from '../assets/images/profile/user-1.jpg';
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom"; //this is just for example
 
 
 export const UserDashboard = () => {
@@ -49,7 +49,7 @@ export const UserDashboard = () => {
                           <p className="mb-0 fs-3">My Task</p>
                         </a>
                         <a href="./authentication-login.html" className="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
-                      </div>
+                      </div> 
                     </div>
                   </li>
                 </ul>
