@@ -2,21 +2,21 @@
 const User = require('../models/User');
 
 const profileController = {
-  getProfileById: async (req, res) => {
+  getUserById: async (req, res) => {
     try {
       const userId = req.params.userId;
 
       // Fetch the user from the database by userId
-      const user = await User.findOne({ userId });
+      const user = await User.findOne({ userId }); // Change to use userId
 
       if (!user) {
         return res.status(404).json({ error: 'User not found' });
       }
 
-      // Send the user profile data as a response
-      res.status(200).json({ userProfile: user.profile }); // Modify this according to your User model structure
+      // Send the user data as a response
+      res.status(200).json({ user });
     } catch (error) {
-      console.error('Error fetching user profile by ID:', error);
+      console.error('Error fetching user by ID:', error);
       res.status(500).json({ error: 'Internal server error' });
     }
   },

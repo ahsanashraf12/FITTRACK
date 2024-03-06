@@ -6,7 +6,7 @@ const router = express.Router();
 const profileController = require('../controllers/profileController');
 
 // Define routes
-router.get('/:userId', profileController.getProfileById);
+router.get('/:userId', profileController.getUserById);
 router.put('/:userId', profileController.updateProfileById);
 // Add more routes as needed
 

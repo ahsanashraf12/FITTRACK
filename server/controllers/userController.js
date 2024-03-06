@@ -12,6 +12,23 @@ const userController = {
     try {
       const { username, password, name, email } = req.body;
 
+      // Validate email format
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        return res.status(400).json({ errors: [{ msg: 'Invalid email format' }] });
+      }
+
+      // Validate username length
+      if (username.length < 4 || username.length > 20) {
+        return res.status(400).json({ errors: [{ msg: 'Username should be between 4 and 20 characters long' }] });
+      }
+
+      // Validate password length
+      if (password.length < 6) {
+        return res.status(400).json({ errors: [{ msg: 'Password should be at least 6 characters long' }] });
+      }
+
+
       const existingUser = await User.findOne({ $or: [{ username }, { email }] });
       if (existingUser) {
         return res.status(400).json({ errors: [{ msg: 'Username or email already exists' }] });
@@ -77,11 +94,6 @@ const userController = {
   getUserById: async (req, res) => {
     try {
       const userId = req.params.userId;
-
-      // Check if userId is a valid ObjectId
-      if (!mongoose.isValidObjectId(userId)) {
-        return res.status(400).json({ error: 'Invalid user ID' });
-      }
 
       // Fetch the user from the database by userId
       const user = await User.findOne({ userId }); // Change to use userId

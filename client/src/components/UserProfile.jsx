@@ -5,30 +5,26 @@ import defaultProfileImage from '../assets/images/profile/user-1.jpg';
 
 export const UserProfile = () => {
   const { userId } = useParams();
-  const [user, setUser] = useState(null);
+  console.log("UserId in UserDashboard:", userId);
 
   useEffect(() => {
-    const fetchUser = async () => {
+    const fetchUserDetails = async () => {
       try {
         const response = await fetch(`http://localhost:5001/api/user/${userId}`);
         const userData = await response.json();
-
-        if (response.ok) {
-          setUser(userData.user);
-        } else {
-          console.error('Error fetching user:', userData.error);
-        }
+        setUser(userData.user); // Assuming the user object is nested under "user" property
       } catch (error) {
-        console.error('Error fetching user:', error);
+        console.error('Error fetching user details:', error);
       }
     };
-
+  
     if (userId) {
-      fetchUser();
+      fetchUserDetails(); // Corrected function name
     }
   }, [userId]);
 
   return (
+    <>
     <div>
       {user ? (
         <div>
@@ -46,6 +42,7 @@ export const UserProfile = () => {
         <p>Loading...</p>
       )}
     </div>
+    </>
   );
 };
 
